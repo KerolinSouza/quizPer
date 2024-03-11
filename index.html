@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="https://cdn-icons-png.flaticon.com/512/2053/2053760.png">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz de perguntas - Internet</title>
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            text-align: center;
+        }
+
+        .quiz-container {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        #pergunta {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        #opcoes {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        button {
+            padding: 10px 20px;
+            margin: 10px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .correto {
+            background-color: #8bc34a;
+        }
+
+        .incorreto {
+            background-color: #FF5722;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="quiz-container">
+        <h1>Quiz de Perguntas e Respostas <br> Sobre Internet</h1>
+        <div id="pergunta"></div>
+        <div id="opcoes"></div>
+        <div id="resultado"></div>
+    </div>
+
+    <script>
+        const perguntas = [
+            {
+                pergunta: "Quando foi criado o primeiro computador?",
+                opcoes: ["1976", "1987", "1959", "2000"],
+                resposta: "1976"
+            },
+            {
+                pergunta: "O que é um algoritmo?",
+                opcoes: ["Algoritimo é um logotipo", "Algoritmo é um conjunto de instruções passo a passo", "Algoritimo é um labirinto", "Algoritimo é um conjunto de class"],
+                resposta: "Algoritmo é um conjunto de instruções passo a passo"
+            },
+            {
+                pergunta: "O que é HTML?",
+                opcoes: ["Uma linguagem de programação", "Uma linguagem de marcação para criar páginas web", "Um sistema operacional", "Um operador"],
+                resposta: "Uma linguagem de marcação para criar páginas web"
+            },
+            // Adicione mais perguntas aqui...
+            {
+                pergunta: "O que é JavaScript?",
+                opcoes: ["Uma linguagem de programação para desenvolvimento de aplicativos móveis", "Uma linguagem de programação para desenvolvimento web", "Uma linguagem de programação para análise de dados"],
+                resposta: "Uma linguagem de programação para desenvolvimento web"
+            },
+            {
+                pergunta: "O que é CSS?",
+                opcoes: ["Uma linguagem de programação para interatividade em páginas web", " Uma linguagem de marcação para criar páginas web", "Uma linguagem de estilização para design de páginas web", "Uma galeria de fonte"],
+                resposta: "Uma linguagem de estilização para design de páginas web"
+            },
+        ];
+
+        const perguntaElemento = document.getElementById("pergunta");
+        const opcoesElemento = document.getElementById("opcoes");
+        const resultadoElemento = document.getElementById("resultado");
+
+        let indicePerguntaAtual = 0;
+
+        function carregarPergunta() {
+            const perguntaAtual = perguntas[indicePerguntaAtual];
+            perguntaElemento.textContent = perguntaAtual.pergunta;
+
+            opcoesElemento.innerHTML = "";
+            perguntaAtual.opcoes.forEach(opcao => {
+                const botao = document.createElement("button");
+                botao.textContent = opcao;
+                botao.addEventListener("click", () => verificarResposta(opcao));
+                opcoesElemento.appendChild(botao);
+            });
+        }
+
+        function verificarResposta(respostaSelecionada) {
+            const perguntaAtual = perguntas[indicePerguntaAtual];
+            if (respostaSelecionada === perguntaAtual.resposta) {
+                resultadoElemento.textContent = "Resposta correta!";
+                resultadoElemento.className = "correto";
+            } else {
+                resultadoElemento.textContent = "Resposta incorreta. A resposta correta é: " + perguntaAtual.resposta;
+                resultadoElemento.className = "incorreto";
+            }
+            // Avança para a próxima pergunta ou finaliza o quiz 
+            indicePerguntaAtual++;
+            if (indicePerguntaAtual < perguntas.length) {
+                setTimeout(carregarPergunta, 2000); //carrega próxima pergunta após 2 segundos
+            } else {
+                resultadoElemento.textContent = "Quiz concluído!";
+                resultadoElemento.className = "";
+            }
+        }
+
+        // Carrega a primeira pergunta quando a página carrega
+        carregarPergunta();
+    </script>
+</body>
+<footer> Kerolin de Souza F - 2024</footer>
+</html>

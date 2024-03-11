@@ -1,0 +1,36 @@
+@charset "utf-8";
+
+body{
+ background-image: url(https://universodenegocios.com.br/wp-content/uploads/2023/03/internet.jpg);
+background-size: cover;
+background-repeat: no-repeat;
+}
+
+h1{
+    text-align: center;
+    background-color:whitesmoke;
+       font-size: 130%;
+       font-style: oblique;
+       margin-right: 20%;
+       margin-left: 30%;
+       font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+   }
+
+   .quiz-container{
+    text-align: center;
+    background-color:rgb(143, 139, 139);
+       font-size: 130%;
+       font-style: oblique;
+       margin-right: 20%;
+       margin-left: 30%;
+       font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+   }
+
+   footer{
+    position: absolute;
+    bottom: 0;
+    background-color:black;
+     left: 15%; 
+    transform: translate(-50%); 
+    color: wheat;
+}
